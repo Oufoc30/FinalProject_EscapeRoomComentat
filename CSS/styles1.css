@@ -1,0 +1,191 @@
+/* EXPLICACIÓ: Modifica el comportament general de la pàgina: elimina marges, evita scroll i posa una font base. */
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* INTRO */
+/* EXPLICACIÓ: Modifica la pantalla inicial d'introducció: la fixa a tota la pantalla, centra el contingut i la posa per sobre del joc. */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: #111;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 50;
+}
+/* EXPLICACIÓ: Modifica el paràgraf de la introducció: en limita l'amplada i millora la lectura del text. */
+#intro p{
+  width: 40%;
+  line-height: 25px;
+  margin-bottom: 0;
+}
+/* EXPLICACIÓ: Modifica el títol de la introducció: canvia la tipografia i la mida perquè sigui més visual. */
+#intro h1{
+  font-family:"Instrument Serif", serif ;
+  font-size: 50px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* CANVAS */
+/* EXPLICACIÓ: Modifica el canvas de Three.js: fa que ocupi tota la pantalla com a fons del joc 3D. */
+canvas {
+  position: fixed;
+  inset: 0;
+}
+
+/* BLUR */
+/* EXPLICACIÓ: Modifica la capa de desenfocament: queda preparada per enfosquir i difuminar el fons quan apareix un popup. */
+#overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* EXPLICACIÓ: Modifica l'overlay quan està actiu: el fa visible aplicant l'opacitat. */
+#overlay.active {
+  opacity: 1;
+}
+
+/* POPUP */
+/* EXPLICACIÓ: Modifica el popup principal: el col·loca fora de pantalla inicialment i defineix com apareixerà amb una transició. */
+#popup {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    to top,
+    white 10%,
+    rgba(255,255,255,0)
+  );
+
+  transition: 0.6s ease;
+  z-index: 20;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* EXPLICACIÓ: Modifica el popup quan està actiu: el puja fins a ocupar la pantalla. */
+#popup.active {
+  bottom: 0;
+}
+
+/* EXPLICACIÓ: Modifica el contingut intern del popup: centra el text i limita l'amplada perquè no ocupi tota la pantalla. */
+#popup-content {
+  text-align: center;
+  margin: 50px;
+  width: min(900px, 90%);
+}
+
+/* EXPLICACIÓ: Modifica les imatges dins del popup: fixa una alçada i deixa marge inferior. */
+#popup img {
+  height: 400px;
+  margin-bottom: 10px;
+}
+
+/* EXPLICACIÓ: Modifica tots els elements: fa que les mides incloguin padding i border per evitar desajustos visuals. */
+* {
+  box-sizing: border-box;
+}
+
+/* EXPLICACIÓ: Modifica de nou el cos de la pàgina: aplica la font principal, mida de text i alineació centrada. */
+body{
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    text-align: center;
+}
+/* EXPLICACIÓ: Modifica tots els subtítols h2: els dona una tipografia més destacada i mida gran. */
+h2{
+    font-family: "Instrument Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 30px;
+    text-align: center;
+}
+/* EXPLICACIÓ: Modifica la imatge del popup normal: la centra horitzontalment. */
+#normal-popup-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*Afegim*/
+/* ===== LAYOUTS POPUP ===== */
+/* EXPLICACIÓ: Modifica el layout especial de la caixa forta: inicialment queda ocult i preparat per mostrar dues columnes. */
+#safe-layout {
+  display: none;
+  gap: 40px;
+  width: 100%;
+  align-items: center;
+}
+
+/* EXPLICACIÓ: Modifica el layout de la caixa forta quan està actiu: el mostra com un contenidor flexible. */
+#safe-layout.active {
+  display: flex;
+}
+
+/* EXPLICACIÓ: Modifica el layout normal del popup: queda visible per defecte. */
+#normal-layout {
+  display: block;
+}
+
+/* ===== CAIXA FORTA ===== */
+/* EXPLICACIÓ: Modifica la columna esquerra de la caixa forta: ocupa la meitat de l'espai i alinea el text a l'esquerra. */
+.safe-left {
+  width: 50%;
+  text-align: left;
+}
+
+/* EXPLICACIÓ: Modifica la columna dreta de la caixa forta: ocupa la meitat de l'espai i centra el contingut. */
+.safe-right {
+  width: 50%;
+  text-align: center;
+}
+
+/* EXPLICACIÓ: Modifica la imatge de la caixa forta: ajusta la mida i separació respecte al display de dígits. */
+.safe-right img {
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+/* Display dígits */
+/* EXPLICACIÓ: Modifica el contenidor dels dígits: col·loca les tres caselles en fila i centrades. */
+#safe-display {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+/* EXPLICACIÓ: Modifica cada casella de dígit: defineix mida, vora, arrodoniment, font i centrat del número. */
+.digit-box {
+  width: 60px;
+  height: 80px;
+  border: 3px solid #000;
+  border-radius: 10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+}

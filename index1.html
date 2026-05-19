@@ -1,0 +1,77 @@
+<!-- EXPLICACIÓ GENERAL HTML: Aquest fitxer defineix l'estructura visual del joc: pantalla inicial, canvas 3D, overlay i popups. -->
+<!DOCTYPE html>
+<html lang="ca">
+<!-- EXPLICACIÓ: Al head es carreguen la codificació, el títol, la configuració responsive, les fonts i el CSS extern. -->
+<head>
+  <meta charset="UTF-8">
+  <title>Escape Room 3D</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda&family=Kaisei+HarunoUmi&display=swap" rel="stylesheet">
+
+  <!-- CSS extern -->
+  <link rel="stylesheet" href="CSS/styles1.css">
+</head>
+
+<!-- EXPLICACIÓ: Al body hi ha tots els elements visibles del joc que després el JavaScript manipularà. -->
+<body>
+
+<!-- INTRO -->
+<!-- EXPLICACIÓ: Aquesta capa és la pantalla inicial que veu el jugador abans de començar. -->
+<div id="intro">
+  <h1>Escape Room 3D</h1>
+  <p>Per poder interactuar amb el joc, has d’escanejar les targetes i objectes que tens sobre la taula. Aquestes seran les teves passes per dur a terme la investigació. Els peons et mouran per la sala i les targetes et donaran pistes. Passa el botó d'inici pel lector per començar...<br><br>T'hi atreveixes? </p>
+</div>
+
+<!-- THREE.JS -->
+<!-- EXPLICACIÓ: Aquest canvas és on Three.js dibuixa la sala 3D. -->
+<canvas id="three"></canvas>
+
+<!-- BLUR OVERLAY -->
+<!-- EXPLICACIÓ: Aquesta capa serveix per aplicar el desenfocament del fons quan apareix un popup. -->
+<div id="overlay"></div>
+
+<!-- POPUP -->
+<!-- EXPLICACIÓ: Aquest bloc és el contenidor general dels popups que mostren pistes, objectes i missatges del joc. -->
+<div id="popup">
+  <div id="popup-content">
+
+<!-- EXPLICACIÓ: Aquest és el format normal del popup, amb imatge, títol i text. -->
+    <div id="normal-layout">
+      <img id="normal-popup-img">
+      <h2 id="normal-popup-title"></h2>
+      <p id="normal-popup-text"></p>
+    </div>
+
+<!-- EXPLICACIÓ: Aquest és el format especial del popup de la caixa forta, amb text a un costat i dígits a l'altre. -->
+    <div id="safe-layout">
+      <div class="safe-left">
+        <h2 id="safe-popup-title"></h2>
+        <p id="safe-popup-text"></p>
+      </div>
+
+      <div class="safe-right">
+        <img id="safe-popup-img">
+
+<!-- EXPLICACIÓ: Aquest display conté les tres caselles on es mostra el codi introduït. -->
+        <div id="safe-display">
+          <div class="digit-box"></div>
+          <div class="digit-box"></div>
+          <div class="digit-box"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- EXPLICACIÓ: Es carrega la llibreria SimpleWebSerial, necessària per rebre dades de l'Arduino pel port serial. -->
+<script src="JS/simple-web-serial.min1.js"></script>
+<!-- EXPLICACIÓ: Es carrega el JavaScript principal del joc, on hi ha la lògica de NFC, popups, sala 3D i caixa forta. -->
+<script type="module" src="JS/script1.js"></script>
+
+</body>
+</html>

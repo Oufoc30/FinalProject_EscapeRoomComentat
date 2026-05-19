@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../CUB"
+		},
+		{
+			"path": "../connexio"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "FinalProject_EscapeRoomComentat"
+	}
+}
+
+//Aquest bloc només configura l'espai de treball de Visual Studio Code i Live Server. 
+// No forma part de la lògica del joc.
